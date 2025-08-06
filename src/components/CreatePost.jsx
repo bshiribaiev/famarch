@@ -21,6 +21,10 @@ const CreatePost = () => {
 
     const handleSubmit= async(e) => {
         try {
+            if (!formData.title) {
+                alert("Title is required.");
+                return
+            }
             const { data, error } = await supabase
                 .from('famarch')
                 .insert([
