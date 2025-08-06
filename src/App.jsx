@@ -8,14 +8,9 @@ function App() {
 
   return (
     <Routes>
+      <Route path='/' element={<Home/>} />
       <Route path='create' element={<CreatePost/>} />
-      <Route path='home' element={<Home/>} />
       <Route path='post/:postId' element={<Post/>} /> 
-      <Route path='/' element={
-        <div className='app'> 
-          <h1>Family Archives</h1>
-        </div>
-      }/>
     </Routes>
   )
 }

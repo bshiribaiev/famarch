@@ -54,9 +54,9 @@ const CreatePost = () => {
     }
     return (
         <div className='add'> 
-            <h2>New post</h2>
+            <h1>New post</h1>
             <input type='text' name='title' value={formData.title} placeholder='Title' onChange={handleInput}/>
-            <input type='text' name='description' value={formData.description} placeholder='Description (Optional)' onChange={handleInput}/>
+            <input className='descr' type='text' name='description' value={formData.description} placeholder='Description (Optional)' onChange={handleInput}/>
             <input type='text' name='imageUrl' value={formData.imageUrl} placeholder='Image URL (Optional)' onChange={handleInput}/>
         
             <button onClick={handleSubmit}>Create</button>

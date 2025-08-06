@@ -7,4 +7,106 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%; 
+  height: 100%; 
+  display: flex;
+  text-align: center;
+  background: #FDFAF6;
+}
 
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #99BC85;
+  padding: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+}
+
+.post {
+  border: 1px solid #E4EFE7;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  width: 300px;
+  background: #FAF1E6;
+}
+
+
+.search{
+  padding: 10px;
+  border-radius: 8px;
+  width: 400px;
+}
+
+button {
+  background: #E4EFE7;
+  border-radius: 8px;
+  padding: 7px;
+  margin: 10px;
+}
+
+button:hover{
+  background: #FAF1E6;
+}
+
+.comment {
+  padding: 7px;
+  border-radius: 8px;
+  width: 250px;
+}
+
+.edit {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  gap: 10px;
+  margin: 100px auto;
+  margin-bottom: 10px;
+}
+
+.edit input{
+  padding: 7px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.viewPost {
+  margin-top: 100px;
+}
+
+.current {
+  margin-top: 100px;
+}
+
+.add {
+  margin-top: 100px;
+}
+
+.add input {
+  padding: 7px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.add {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  gap: 10px;
+  margin: 100px auto;
+}
+
+.descr{
+  height: 250px;
+}

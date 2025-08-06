@@ -7,7 +7,9 @@ const Home = () => {
     const supabaseKey = import.meta.env.VITE_SUPABASE_API_KEY
     const supabase = createClient(supabaseUrl, supabaseKey)
 
+    const [originalPosts, setOriginalPosts] = useState([])
     const [posts, setPosts] = useState([])
+    const [searchQuery, setSearchQuery] = useState('')
 
     const fetchPosts = async() => {
         try {
@@ -20,8 +22,8 @@ const Home = () => {
                 } 
                 else {
                     console.log('Data loaded from Supabase: ', data)
-                    const sortedData = [...data].sort((a, b) => b.id - a.id)
-                    setPosts(sortedData)
+                    setOriginalPosts(data)
+                    setPosts(data)
                 }
         }
         catch (err) {
@@ -29,23 +31,59 @@ const Home = () => {
         }
     }
 
+    const sortByDate = () => {
+        const sortedData = [...posts].sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))
+        setPosts(sortedData)
+    } 
+
+    const sortByVotes = () => {
+        const sortedData = [...posts].sort((a, b) => b.votes - a.votes)
+        setPosts(sortedData)
+    } 
+
     useEffect(() => {
         fetchPosts()
     }, [])
 
+    useEffect(() => {
+        const lowercasedQuery = searchQuery.toLowerCase();
+        
+        const filteredList = originalPosts.filter(post =>
+            post.title.toLowerCase().includes(lowercasedQuery)
+        );
+
+        setPosts(filteredList);
+
+    }, [searchQuery, originalPosts]);
+
     return (
         <div className='current'> 
+            <h1>Family Archives</h1>
+            <input
+                type="text"
+                placeholder='Search'
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className='search'
+            />
+
             {posts && (
-                posts.map((post) => (
-                    <Link to={`/post/${post.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <div key={post.id} className='post'>
-                            <h3>{post.title}</h3>
-                            <p>Posted at: {post.created_at}</p>
-                            {post.votes ? (<p>{post.votes} upvotes</p>)
-                            : <p>0 upvotes</p>}
-                        </div>
-                    </Link>
-                ))
+                <>  
+                    <p>Order by: 
+                        <button onClick={sortByDate}>Latest</button> 
+                        <button onClick={sortByVotes}>Most Popular</button> 
+                    </p>
+                    {posts.map((post) => (
+                        <Link key={post.id} to={`/post/${post.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <div className='post'>
+                                <h3>{post.title}</h3>
+                                <p>Posted at: {post.created_at}</p>
+                                {post.votes ? (<p>{post.votes} upvotes</p>)
+                                : <p>0 upvotes</p>}
+                            </div>
+                        </Link>
+                    ))}
+                </>
             )}
         </div> 
     )
