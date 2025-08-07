@@ -77,7 +77,11 @@ const Home = () => {
                         <Link key={post.id} to={`/post/${post.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                             <div className='post'>
                                 <h3>{post.title}</h3>
-                                <p>Posted at: {post.created_at}</p>
+                                <p>Created at: {new Date(post.created_at).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long', 
+                                    day: 'numeric'
+                                })}</p>
                                 {post.votes ? (<p>{post.votes} upvotes</p>)
                                 : <p>0 upvotes</p>}
                             </div>

@@ -14,7 +14,7 @@ html, body {
   height: 100%; 
   display: flex;
   text-align: center;
-  background: #FDFAF6;
+  background: whitesmoke;
 }
 
 nav{
@@ -22,7 +22,7 @@ nav{
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: #99BC85;
+  background: #77BEF0;
   padding: 15px;
 }
 
@@ -39,7 +39,7 @@ nav a {
   margin: 10px;
   display: inline-block;
   width: 300px;
-  background: #FAF1E6;
+  background: white;
 }
 
 
@@ -109,4 +109,29 @@ button:hover{
 
 .descr{
   height: 250px;
+}
+
+img {
+  height: 400px;
+  width: 300px;
+  display: block;
+  margin: 10px auto;
+  border-radius: 8px;
+}
+
+.commentss{
+  background: whitesmoke;
+  padding: 10px;
+  border-radius: 8px;
+  width: 300px;
+  margin: 10px auto;
+  text-align: left;
+}
+
+.commentss h4 {
+  margin-top: 0;
+  text-align: center;
+}
+.postSep {
+  padding-bottom: 100px;
 }

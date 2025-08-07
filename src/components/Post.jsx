@@ -214,9 +214,13 @@ const Post = () => {
                 <div className='viewPost'>
                     <h1>{postData.title}</h1>
                     <p>Description: {postData.text}</p>
-                    <p>Created at: {postData.created_at}</p>
+                    <p>Created at: {new Date(postData.created_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long', 
+                        day: 'numeric'
+                    })}</p>
                     <p>Votes: {postData.votes}</p>
-                    <p>Image: {postData.image}</p>
+                    <img src='/image.png' alt='wedding image'/>
                     
                     <button onClick={handleVote}>Upvote</button>
                     <button onClick={handleEdit}>Edit Post</button>
@@ -224,10 +228,12 @@ const Post = () => {
                 </div>
                 
             )}
-
-            {postData.comments && postData.comments.map((comment, index) => (
-                <p key={index}>- {comment}</p>
-            ))}
+            <div className='commentss'> 
+                <h4>Comments</h4>
+                {postData.comments && postData.comments.map((comment, index) => (
+                    <p key={index}>- {comment}</p>
+                ))}
+            </div>
  
             <input
                 type="text"
