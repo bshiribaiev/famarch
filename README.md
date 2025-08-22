@@ -7,6 +7,6 @@ Built with React.jsx and Supabase
 ## Video Walkthrough
 
 
-<img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Demo](./walkthrough.gif)
 
 
